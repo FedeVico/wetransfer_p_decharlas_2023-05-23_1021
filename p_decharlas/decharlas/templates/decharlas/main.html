@@ -3,81 +3,135 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
-    <link rel="icon" href="{% static 'favicon.ico' %}">
-    <title>DeCharlas</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+
+    <title>Charlas</title>
+    <style type="text/css">
+
+        h2 {color: white; font-family: Verdana; font-size: large}
+
+        #main_header a:any-link {color:whitesmoke; background-color: transparent; font-family: Verdana; font-size: xxx-large; font-weight: bolder; text-decoration: none}
+
+        #menu_option a:any-link {color: white; font-family: Verdana; font-size: ; text-decoration: none; align-content: center}
+        #menu_option a:hover {color: black}
+        #menu_option a:active {color: yellow}
+
+        #main_body {color: black; align-content: start;  height: 100%; display: flex; flex-flow: column}
+        #main_content {height: 100%; font-family:'{{user_info.font_type}}'; font-size:'{{user_info.font_size}}';}
+
+        img {width: 40%; height: auto;}
+
+    </style>
+    <link rel="icon"href="{% static 'favicon.ico' %}">
 </head>
-
+<!--Main page header-->
 <body>
-    <div class="container-fluid" id="main_header">
-        <div class="row bg-dark text-white">
-            <header><a href="/decharlas/">De Charlas</a></header>
-        </div>
+
+<div class="container-fluid" id="main_header">
+    <div class="row bg-dark text-white">
+        <header><a href="/decharlas/" >Charlas</a> </header>
     </div>
+</div>
 
-    <img src="" alt="">
+<img src=""
 
-    <div class="container-fluid" id="main_menu">
-        <div class="row bg-primary text-white border border-light" id="menu_option">
-            <div class="col-xxl-2 col-md-4">
-                <h2>MENU -></h2>
-            </div>
-            <div class="col-xxl-2 col-md-4">
-                <h2><a href="/decharlas/">Main page</a></h2>
-            </div>
-            <div class="col-xxl-2 col-md-4">
-                <h2><a href="/decharlas/config">Settings</a></h2>
-            </div>
-            <div class="col-xxl-2 col-md-4">
-                <h2><a href="/decharlas/help">Help</a></h2>
-            </div>
-            <div class="col-xxl-2 col-md-4">
-                <h2><a href="/admin/">Admin page</a></h2>
-            </div>
-            <div class="col-xxl-2 col-md-4">
-                <h2><a href="/decharlas/logout">Logout</a></h2>
-            </div>
+<!--Menu Scheme-->
+<div class="container-fluid" id="main_menu">
+    <div class="row bg-primary text-white border border-light" id="menu_option">
+        <div class="col-xxl-2 col-md-4">
+            <h2>
+                Menu
+            </h2>
         </div>
-    </div>
 
-    <div class="container-fluid" id="main_body">
-        <div class="row bg-black text-dark row-height">
-            <div class="col-xxl-9 col-md-12 h-100 border border-end border-primary" id="main_content" data-bs-spy="scroll" style="height: 100%; font-family: '{{user_info.font_type}}'; font-size: '{{user_info.font_size}}px';">
-                {% block content %} {% endblock %}
-            </div>
-            <div class="col-xxl-3 col-md-12 border border-end border-primary" id="main_extra">
-                <div class="row g-8">
-                    <div class="col-xxl-12">
-                        <p>User name: {{user_info.name}}</p>
-                        <p>Font type: {{user_info.font_type}}</p>
-                        <p>Font size: {{user_info.font_size}}</p>
-                    </div>
-                    <div class="col-xxl-12">
+        <div class="col-xxl-2 col-md-4" >
+            <h2>
+                <a href="/decharlas/">Main page</a>
+            </h2>
+        </div>
+
+        <div class="col-xxl-2 col-md-4" >
+            <h2>
+                <a href="/decharlas/config">Settings</a>
+            </h2>
+        </div>
+
+        <div class="col-xxl-2 col-md-4">
+            <h2>
+                <a href="/decharlas/help">Help</a>
+            </h2>
+        </div>
+
+        <div class="col-xxl-2 col-md-4">
+            <h2>
+                <a href="/admin/">Admin page</a>
+            </h2>
+        </div>
+
+        <div class="col-xxl-2 col-md-4">
+            <h2>
+                <a href="/decharlas/logout">Logout</a>
+            </h2>
+        </div>
+
+    </div>
+</div>
+
+
+
+<!--Content scheme-->
+<!--d-flex flex-column overflow-hidden min-vh-100 vh-100-->
+<!--https://itecnote.com/tecnote/html-cant-make-100-div-height-between-header-and-footer-with-bootstrap-4/-->
+<div class="container-fluid " id="main_body">
+    <div class="row bg-white text-dark row-height">
+        <div class="col-xxl-9 col-md-12 h-100 border border-end border-primary" id="main_content" data-bs-spy="scroll">
+
+            {% block content %} {% endblock %}
+
+        </div>
+        <div class="col-xxl-3 col-md-12 border border-end border-primary" id="main_extra">
+            <div class="row g-8">
+                <div class="col-xxl-12">
+                    <p>User name: {{user_info.name}}</p>
+                    <p>Font type: {{user_info.font_type}}</p>
+                    <p>Font size: {{user_info.font_size}}</p>
+
+                </div>
+
+                <div class="col-xxl-12">
+                    {% csrf_token %}
+                    <form method="post" action="">
                         {% csrf_token %}
-                        <form method="post" action="">
-                            {% csrf_token %}
-                            <div class="mb-3">
-                                <label for="roomname" class="form-label">Room Entry</label>
-                                <input type="text" class="form-control" id="roomname" name="roomname" aria-describedby="room help" required="required">
-                                <div id="room help" class="form-text">Enter the room name here</div>
-                            </div>
-                            <button type="submit" class="btn btn-primary" name="action" value="newroom">Access room</button>
-                        </form>
-                    </div>
+                      <div class="mb-3">
+                        <label for="roomname" class="form-label">Room Entry</label>
+                        <input type="text" class="form-control" id="roomname" name="roomname" aria-describedby="room help" required="required">
+                        <div id="room help" class="form-text">Enter the room name here</div>
+                      </div>
+                      <button type="submit" class="btn btn-primary" name="action" value="newroom">Access room</button>
+                    </form>
                 </div>
             </div>
+
         </div>
     </div>
+</div>
 
-    <footer class="container-fluid" id="main_footer">
-        <div class="row bg-success bg-gradient text-white">
-            <div class="col">
-                <p>Text Messages: {{stats.text}} | Images: {{stats.img}} | Total users: {{stats.users}}</p>
-            </div>
+<!--Lower info-->
+<footer class="container-fluid" id="main_footer">
+    <div class="row bg-success bg-gradient text-white">
+        <div class="col">
+            <p>Text Messages: {{stats.text}} | Images: {{stats.img}} | Total users: {{stats.users}}</p>
         </div>
-    </footer>
+    </div>
+</footer>
+
+
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+
+
 </body>
 </html>
