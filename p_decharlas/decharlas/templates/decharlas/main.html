@@ -12,13 +12,13 @@
 
         h2 {color: white; font-family: Verdana; font-size: large}
 
-        #main_header a:any-link {color:black; background-color: transparent; font-family: Verdana; font-size: xxx-large; font-weight: bolder; text-decoration: none}
+        #main_header a:any-link {color:white; background-color: transparent; font-family: Verdana; font-size: xxx-large; font-weight: bolder; text-decoration: none}
         #main_menu.bg-primary {
             background-color: #4caf50;
         }
         .deCharlas {
-            color: #4caf50;
-            background-color:white;
+            color: white;
+            background-color:transparent;
             text-align: center;
         }
         #menu_option a:any-link {color: white; font-family: Verdana; font-size: ; text-decoration: none; align-content: center}
@@ -29,9 +29,10 @@
         #main_content {height: 100%; font-family:'{{user_info.font_type}}'; font-size:'{{user_info.font_size}}';}
 
         img {width: 40%; height: auto;}
+        .img2 {width:"50px";height: auto;}
 
         .header-link {
-            color: white;
+            color: transparent;
             font-family: Verdana;
             font-size: 24px;
             font-weight: bold;
@@ -68,24 +69,26 @@
             background-color: #4caf50;
         }
 
-        
+        body {
+          background-image: url('../../static/fondo2.jpg');
+          background-repeat: no-repeat;
+          background-size: cover;
+        }
 
     </style>
     <link rel="icon"href="{% static 'favicon.ico' %}">
 </head>
+
 <!--Main page header-->
 <body>
-
     <div class="container-fluid" id="main_header">
         <div class="deCharlas">
             <header>
                 <a href="/decharlas/" class="header-link">DeCharlas</a>
-                
             </header>
         </div>
     </div>
 
-<img src=""
 
 <!--Menu Scheme-->
 <div class="container-fluid" id="main_menu" style="background-color: #4caf50;">
@@ -138,7 +141,7 @@
   
 
 <!--Lower info-->
-<footer class="container-fluid text-center" id="main_footer">
+<footer class="text-center" id="main_footer">
     <div class="row bg-success bg-gradient text-white">
         <div class="col">
             <p>Mensajes de Texto: {{stats.text}} | Imágenes: {{stats.img}} | Usuarios totales: {{stats.users}}</p>
