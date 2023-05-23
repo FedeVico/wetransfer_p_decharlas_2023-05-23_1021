@@ -20,8 +20,6 @@ class Stats:
         self.img = Message.objects.filter(isimg=True).count()
         self.users = User.objects.all().count()
 
-
-
 def login(request):
 
     if request.method == 'GET' or request.method == 'POST':
@@ -64,11 +62,6 @@ def login(request):
     else:
          return HttpResponse('Page not exist')
 
-
-
-
-
-
 def logout(request):
 
     final_res = redirect('/decharlas/login')
@@ -76,10 +69,7 @@ def logout(request):
 
     return final_res
 
-
-
-
-def newroom(request, user_info):
+def nuevaSala(request, user_info):
 
     room_name = request.POST["roomname"]
 
@@ -102,8 +92,7 @@ def newroom(request, user_info):
 
     return final_res
 
-
-def room_unread(user_info):
+def salaNoLeida(user_info):
 
     room_list = Room.objects.all()
 
@@ -134,9 +123,7 @@ def room_unread(user_info):
 
     return unread_list
 
-
-
-def room_total_msg():
+def mensajesTotal():
 
     room_list = Room.objects.all()
 
@@ -149,7 +136,6 @@ def room_total_msg():
         total_list.append(room_total)
 
     return total_list
-
 
 def vote_list():
 
@@ -170,8 +156,6 @@ def vote_list():
 
     return vote_list
 
-
-
 def update_vote(request, user_info, room_info):
 
     action = request.POST.get('action')
@@ -188,9 +172,6 @@ def update_vote(request, user_info, room_info):
     except Room_Vote.DoesNotExist:
         user_vote = Room_Vote(room=room_info, user=user_info, vote=action_vote)
         user_vote.save()
-
-
-
 
 def general(request):
     # GET method retreives the main page
@@ -226,9 +207,9 @@ def general(request):
             context = {
                 'user_info': user_info,
                 'room_list': room_list,
-                'room_unread': room_unread(user_info),
+                'salaNoLeida': salaNoLeida(user_info),
                 'vote_list': vote_list(),
-                'total_msg': room_total_msg(),
+                'total_msg': mensajesTotal(),
                 'stats': main_stats,
             }
 
@@ -239,7 +220,7 @@ def general(request):
         else:
             # If method is POST, a new room is created if it doesn't exist, and the user is redirected to that room
 
-            final_res = newroom(request, user_info)
+            final_res = nuevaSala(request, user_info)
 
         # If user didn't send a cookie, one needs to be sent
 
@@ -248,13 +229,6 @@ def general(request):
     else:
         raise Http404
     # IF the method is incorrect, return a 404 Error
-
-
-
-
-
-
-
 
 def config(request):
 
@@ -291,8 +265,8 @@ def config(request):
 
             action = request.POST.get('action')
 
-            if action == "newroom":
-                return newroom(request, user_info)
+            if action == "nuevaSala":
+                return nuevaSala(request, user_info)
 
             font_type = request.POST['font_type']
             font_size = request.POST['font_size']
@@ -317,10 +291,6 @@ def config(request):
 
 
         raise Http404
-
-
-
-
 
 def help(request):
 
@@ -350,7 +320,7 @@ def help(request):
 
         else:
 
-            return newroom(request, user_info)
+            return nuevaSala(request, user_info)
 
 
         return final_res
@@ -358,8 +328,6 @@ def help(request):
     else:
 
         raise Http404
-
-
 
 def newmsg(request, room, user):
 
@@ -378,7 +346,6 @@ def newmsg(request, room, user):
                       room=room)
     new_msg.save()
 
-
 def user_register(room, user):
 
     try:
@@ -391,9 +358,6 @@ def user_register(room, user):
                                       room=room,
                                       date=timezone.now())
         user_register.save()
-
-
-
 
 def rsc(request, resource):
     # Both GET and POST methods retrieves the same page, but POST inserts a new message
@@ -423,8 +387,8 @@ def rsc(request, resource):
 
             action = request.POST.get('action')
 
-            if action == "newroom":
-                return newroom(request, user_info)
+            if action == "nuevaSala":
+                return nuevaSala(request, user_info)
 
             elif action == 'like' or action == 'dislike':
                 update_vote(request, user_info, room_info)
@@ -455,8 +419,6 @@ def rsc(request, resource):
 
     else:
         raise Http404
-
-
 
 def jsonrsc(request, resource):
 
@@ -493,9 +455,6 @@ def jsonrsc(request, resource):
     else:
         raise Http404
 
-
-
-
 def dynrsc(request, resource):
 
     if request.method == "GET" or request.method == "POST":
@@ -524,8 +483,8 @@ def dynrsc(request, resource):
 
             action = request.POST.get('action')
 
-            if action == "newroom":
-                return newroom(request, user_info)
+            if action == "nuevaSala":
+                return nuevaSala(request, user_info)
 
             elif action == 'like' or action == 'dislike':
                 update_vote(request, user_info, room_info)

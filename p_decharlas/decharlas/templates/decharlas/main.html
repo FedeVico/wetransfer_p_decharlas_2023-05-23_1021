@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
 
-    <title>Charlas</title>
+    <title>DeCharlas</title>
     <style type="text/css">
 
         h2 {color: white; font-family: Verdana; font-size: large}
@@ -73,7 +73,7 @@
 <img src=""
 
 <!--Menu Scheme-->
-<div class="container-fluid" id="main_menu" style="background-color: green;">
+<div class="container-fluid" id="main_menu" style="background-color: #4caf50;">
     <div class="row bg-primary text-white border border-light" id="menu_option">
       <div class="col-xxl-2 col-md-4 dropdown">
         <h2 class="dropdown-toggle" id="menu-toggle" data-bs-toggle="dropdown" aria-expanded="false">
@@ -96,54 +96,39 @@
 <!--Content scheme-->
 <!--d-flex flex-column overflow-hidden min-vh-100 vh-100-->
 <!--https://itecnote.com/tecnote/html-cant-make-100-div-height-between-header-and-footer-with-bootstrap-4/-->
-<div class="container-fluid " id="main_body">
+<div class="container-fluid" id="main_body">
     <div class="row bg-white text-dark row-height">
-        <div class="col-xxl-9 col-md-12 h-100 border border-end border-primary" id="main_content" data-bs-spy="scroll">
-
-            {% block content %} {% endblock %}
-
+      <div class="col-xxl-3 col-md-12 border border-end border-primary" id="main_extra">
+        <div class="row g-8">
+          <div class="col-xxl-12">
+            {% csrf_token %}
+            <form method="post" action="">
+              {% csrf_token %}
+              <div class="mb-3">
+                <label for="roomname" class="form-label">Entrada a la sala</label>
+                <input type="text" class="form-control" id="roomname" name="roomname" aria-describedby="room help" required="required">
+                <div id="room help" class="form-text">Introduce nombre</div>
+              </div>
+              <button type="submit" class="btn btn-primary" name="action" value="nuevaSala">Acceder a la sala</button>
+            </form>
+          </div>
         </div>
-        <div class="col-xxl-3 col-md-12 border border-end border-primary" id="main_extra">
-            <div class="row g-8">
-                <div class="col-xxl-12">
-                    <p>Nombre del usuario: {{user_info.name}}</p>
-                    <p>Tipo de fuente: {{user_info.font_type}}</p>
-                    <p>Tamaño de fuente: {{user_info.font_size}}</p>
-
-                </div>
-
-                <div class="col-xxl-12">
-                    {% csrf_token %}
-                    <form method="post" action="">
-                        {% csrf_token %}
-                      <div class="mb-3">
-                        <label for="roomname" class="form-label">Entrada a la sala</label>
-                        <input type="text" class="form-control" id="roomname" name="roomname" aria-describedby="room help" required="required">
-                        <div id="room help" class="form-text">Introduce nombre</div>
-                      </div>
-                      <button type="submit" class="btn btn-primary" name="action" value="newroom">Acceder a la sala</button>
-                    </form>
-                </div>
-            </div>
-
-        </div>
+      </div>
+      <div class="col-xxl-9 col-md-12 h-100 border border-end border-primary" id="main_content" data-bs-spy="scroll">
+        {% block content %} {% endblock %}
+      </div>
     </div>
-</div>
+  </div>
+  
 
 <!--Lower info-->
-<footer class="container-fluid" id="main_footer">
+<footer class="container-fluid text-center" id="main_footer">
     <div class="row bg-success bg-gradient text-white">
         <div class="col">
             <p>Mensajes de Texto: {{stats.text}} | Imágenes: {{stats.img}} | Usuarios totales: {{stats.users}}</p>
         </div>
     </div>
 </footer>
-
-
-
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
-
-
 </body>
 </html>
