@@ -1,0 +1,42 @@
+{% extends 'decharlas/main.html' %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xxl-12">
+            {% for msg in msg_list %}
+            <p>
+            {% if msg.isimg %}
+            <img src={{msg.content}}>
+            {% else %}
+            -> {{msg.content}}
+            {% endif %}
+            <br/>Author: {{msg.author.name}}</p>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row bg-info bg-gradient text-dark">
+        <form method="POST">
+            {% csrf_token %}
+            <label for="content">Enter Message</label>
+            <input type="text" name="content" id="content">
+            <label for="isimg">Image Msg</label>
+            <input type="checkbox" name="isimg" id="isimg">
+            <button type="submit" value="sendmsg">Send Message</button>
+        </form>
+        <form method="POST" action="">
+            {% csrf_token %}
+            <button type="submit" name="action" value="like">LIKE</button>
+        </form>
+        <form method="POST" action="">
+            {% csrf_token %}
+            <button type="submit" name="action" value="dislike">DISLIKE</button>
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}

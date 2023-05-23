@@ -1,0 +1,36 @@
+{% extends 'decharlas/main.html' %}
+
+
+{% block content %}
+
+<p id="set-intro">SETTINGS</p>
+
+
+<div class="container-fluid">
+    <div class="row">
+      <form method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+        <table>
+          <tr>
+            <td>
+              <label for="config_name">Username:</label>
+            </td>
+            <td>
+              <input type="text" name="config_name" id="config_name">
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <button type="submit" value="sendconfig">Enter</button>
+            </td>
+          </tr>
+        </table>
+      </form>
+    </div>
+</div>
+
+
+
+
+{% endblock %}

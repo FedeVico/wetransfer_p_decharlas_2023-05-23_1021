@@ -1,0 +1,43 @@
+{% extends 'decharlas/main.html' %}
+{% load static %}
+
+{% block content %}
+
+<br>
+<link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+<p><help>HELP PAGE</help></p>
+<br>
+<p>Guia de ayuda sobre la página web "DeCharlas":</p>
+<br>
+<details>
+  <summary>¿Cómo introducir la contraseña?</summary>
+  <p>Todas las contraseñas de la forma "pass_X", siendo X un numero del 1 al 9 son contraseñas válidas.</p>
+</details><br>
+<details>
+  <summary>¿Cómo acceder a diferentes campos?</summary>
+  <p>En la página principal hay una barra de menú para acceder a diferentes campos: "main page" para la página principal, "settings" para cambiar nombre y tipo de letra, "help" para desplegar este archivo, "admin" para la página del administrador, y "logout" para salir.</p>
+</details><br>
+<details>
+  <summary>¿Cómo acceder a una sala?</summary>
+  <p>En la página principal hay dos opciones para acceder a una sala: buscándola entre todas las páginas, o introduciendo su nombre.</p>
+</details><br>
+<details>
+  <summary>¿Cómo entrar en una sala?</summary>
+  <p>Para entrar en alguna sala existen dos opciones: de forma estática, en la que no aparecerán mensajes nuevos hasta que recargues la página o entres y salgas; o dinámica, en la que se recarga automáticamente cada 10 segundos.</p>
+</details><br>
+<details>
+	<summary>¿Cómo crear en una sala?</summary>
+	<p>A la derecha de la página se puede introducir el nombre de una sala para acceder a ella, o para crearla si aún no existe. Esta opción está disponible en todas las ventanas.</p>
+</details><br>
+<details>
+  <summary>¿Cómo enviar mensajes en una sala?</summary>
+  <p>Dentro de cada una de las salas se pueden introducir nuevos mensajes utilizando el formulario abajo del todo. Además, hay una checkbox para indicar si el mensaje es texto (checkbox sin marcar) o es una URL a una imagen (checkbox marcada).</p>
+</details><br>
+<details>
+	<summary>¿En que consiste el botón "Like"?</summary>
+	<p>Todas las salas tendrán un botón de "Me Gusta", para indicar la sala más votada de todas.</p>  
+</details><br>
+
+
+
+{% endblock %}
