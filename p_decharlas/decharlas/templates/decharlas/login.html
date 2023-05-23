@@ -2,36 +2,109 @@
 {% load static %}
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Login Charlas</title>
-  <link rel="icon"href="{% static 'favicon.ico' %}">
+  <meta charset="UTF-8">
+  <title>Login Charlas</title>
+  <link rel="icon" href="{% static 'favicon.ico' %}">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      margin: 0;
+      padding: 0;
+    }
+
+    #login_container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .login_box {
+      background-color: #fff;
+      border-radius: 5px;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .login_title {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .login_title h1 {
+      font-size: 24px;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+
+    .login_subtitle {
+      font-size: 14px;
+      color: #777;
+      margin-top: 5px;
+    }
+
+    .login_form {
+      margin-top: 20px;
+    }
+
+    .form_group {
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    .form_group label {
+      display: block;
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 5px;
+    }
+
+    .form_group input[type="password"] {
+      width: 100%;
+      padding: 8px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+    }
+
+    .form_group button {
+      padding: 8px 20px;
+      font-size: 14px;
+      background-color: #4caf50;
+      color: #fff;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+      
+    }
+
+    .form_group button:hover {
+      background-color: #45a049;
+    }
+  </style>
 </head>
 <body>
-
-
-<div class="text" id="login_title">
-  <h1><p>LOGIN CHARLAS</p></h1>
-  {%if failed_post%}
-  <p>Prueba otra vez, (¿puede que con pass_x siendo x un numero del 0 al 9?)</p>
-  {% endif %}
-</div>
-
-<form method="post">
-  {% csrf_token %}
-  <table>
-    <tr>
-      <td>
-        <label for="password_enter">Contraseña:</label>
-      </td>
-      <td>
-        <input type="password" id="password_enter" name="login_pwd">
-      </td>
-      <td>
-        <button type="submit" class="btn btn-primary">ENTER</button>
-      </td>
-    </tr>
-  </table>
-</form>
-
+  <div id="login_container">
+    <div class="login_box">
+      <div class="login_title">
+        <h1>LOGIN DECHARLAS</h1>
+        {% if failed_post %}
+        <p>Prueba otra vez, (¿puede que con pass_x siendo x un número del 0 al 9?)</p>
+        {% endif %}
+      </div>
+      <form class="login_form" method="post">
+        {% csrf_token %}
+        <div class="form_group">
+          <label for="password_enter">Contraseña:</label>
+          <input type="password" id="password_enter" name="login_pwd">
+        </div>
+        <div class="form_group">
+          <button type="submit">ENTER</button>
+        </div>
+      </form>
+    </div>
+  </div>
 </body>
 </html>

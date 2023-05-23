@@ -4,7 +4,6 @@ body {
   
   p {
     margin-bottom: 0.5rem;
-    font-style: italic;
   }
   
   summary {
@@ -24,14 +23,12 @@ body {
     margin-bottom: 0.5rem;
   }
 
-  help {
-    text-align: right;
-    color: blue;
-    font-size: 32px;
-    font-style: italic;
-}
+ 
+
 
 h2 {
     color: black;
     font-size: 24px;
 }
+
+img {width: 40%; height: auto;}

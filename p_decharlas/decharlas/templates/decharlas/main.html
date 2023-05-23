@@ -13,6 +13,9 @@
         h2 {color: white; font-family: Verdana; font-size: large}
 
         #main_header a:any-link {color:whitesmoke; background-color: transparent; font-family: Verdana; font-size: xxx-large; font-weight: bolder; text-decoration: none}
+        #main_menu {
+            background-color: #4caf50;
+        }
 
         #menu_option a:any-link {color: white; font-family: Verdana; font-size: ; text-decoration: none; align-content: center}
         #menu_option a:hover {color: black}
@@ -22,6 +25,38 @@
         #main_content {height: 100%; font-family:'{{user_info.font_type}}'; font-size:'{{user_info.font_size}}';}
 
         img {width: 40%; height: auto;}
+
+        .dropdown-menu {
+            background-color: #4caf50;
+            border: none;
+            border-radius: 0;
+            padding: 0;
+        }
+
+        .dropdown-item {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #4caf50;
+            background-color: #4caf50;
+            border: none;
+            
+        }
+
+        .dropdown-item:hover, .dropdown-item:focus {
+            background-color: #e9ecef;
+            color: #4caf50;
+        }
+
+        .dropdown-divider {
+            margin: 0;
+            border-top: 1px solid #e9ecef;
+        }
+        
+        button.btn-primary {
+            background-color: #4caf50;
+        }
+
+        
 
     </style>
     <link rel="icon"href="{% static 'favicon.ico' %}">
@@ -38,47 +73,24 @@
 <img src=""
 
 <!--Menu Scheme-->
-<div class="container-fluid" id="main_menu">
+<div class="container-fluid" id="main_menu" style="background-color: green;">
     <div class="row bg-primary text-white border border-light" id="menu_option">
-        <div class="col-xxl-2 col-md-4">
-            <h2>
-                Menu
-            </h2>
-        </div>
-
-        <div class="col-xxl-2 col-md-4" >
-            <h2>
-                <a href="/decharlas/">Página principal</a>
-            </h2>
-        </div>
-
-        <div class="col-xxl-2 col-md-4" >
-            <h2>
-                <a href="/decharlas/config">Configuración</a>
-            </h2>
-        </div>
-
-        <div class="col-xxl-2 col-md-4">
-            <h2>
-                <a href="/decharlas/help">Ayuda</a>
-            </h2>
-        </div>
-
-        <div class="col-xxl-2 col-md-4">
-            <h2>
-                <a href="/admin/">Página del Admin</a>
-            </h2>
-        </div>
-
-        <div class="col-xxl-2 col-md-4">
-            <h2>
-                <a href="/decharlas/logout">Logout</a>
-            </h2>
-        </div>
-
+      <div class="col-xxl-2 col-md-4 dropdown">
+        <h2 class="dropdown-toggle" id="menu-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+          Menú
+        </h2>
+        <ul class="dropdown-menu" aria-labelledby="menu-toggle">
+          <li><a class="dropdown-item" href="/decharlas/">Página principal</a></li>
+          <li><a class="dropdown-item" href="/decharlas/config">Configuración</a></li>
+          <li><a class="dropdown-item" href="/decharlas/help">Ayuda</a></li>
+          <li><a class="dropdown-item" href="/admin/">Página del Admin</a></li>
+        </ul>
+      </div>
+      <div class="col-xxl-2 col-md-4 text-end">
+        <h2><a href="/decharlas/logout">Logout</a></h2>
+      </div>
     </div>
-</div>
-
+  </div>
 
 
 <!--Content scheme-->
@@ -94,9 +106,9 @@
         <div class="col-xxl-3 col-md-12 border border-end border-primary" id="main_extra">
             <div class="row g-8">
                 <div class="col-xxl-12">
-                    <p>User name: {{user_info.name}}</p>
-                    <p>Font type: {{user_info.font_type}}</p>
-                    <p>Font size: {{user_info.font_size}}</p>
+                    <p>Nombre del usuario: {{user_info.name}}</p>
+                    <p>Tipo de fuente: {{user_info.font_type}}</p>
+                    <p>Tamaño de fuente: {{user_info.font_size}}</p>
 
                 </div>
 
@@ -105,11 +117,11 @@
                     <form method="post" action="">
                         {% csrf_token %}
                       <div class="mb-3">
-                        <label for="roomname" class="form-label">Room Entry</label>
+                        <label for="roomname" class="form-label">Entrada a la sala</label>
                         <input type="text" class="form-control" id="roomname" name="roomname" aria-describedby="room help" required="required">
-                        <div id="room help" class="form-text">Enter the room name here</div>
+                        <div id="room help" class="form-text">Introduce nombre</div>
                       </div>
-                      <button type="submit" class="btn btn-primary" name="action" value="newroom">Access room</button>
+                      <button type="submit" class="btn btn-primary" name="action" value="newroom">Acceder a la sala</button>
                     </form>
                 </div>
             </div>
@@ -122,7 +134,7 @@
 <footer class="container-fluid" id="main_footer">
     <div class="row bg-success bg-gradient text-white">
         <div class="col">
-            <p>Text Messages: {{stats.text}} | Images: {{stats.img}} | Total users: {{stats.users}}</p>
+            <p>Mensajes de Texto: {{stats.text}} | Imágenes: {{stats.img}} | Usuarios totales: {{stats.users}}</p>
         </div>
     </div>
 </footer>

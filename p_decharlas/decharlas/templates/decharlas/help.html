@@ -3,11 +3,42 @@
 
 {% block content %}
 
+<head>
 <br>
-<link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
-<p><help>Ayuda</help></p>
+<style type="text/css">
+body {
+    font-family: Arial, sans-serif;
+}
+  
+  p {
+    margin-bottom: 0.5rem;
+  }
+  
+  summary {
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  details > p {
+    margin-left: 1rem;
+  }
+  
+  details > p:first-child {
+    margin-top: 0.5rem;
+  }
+  
+  details > p:last-child {
+    margin-bottom: 0.5rem;
+  }
+
+  h2 {color: white; font-family: Verdana; font-size: large}
+
+
+img {width: 40%; height: auto;}	
+</style>	
+
 <br>
-<h2>Guia de ayuda sobre la página web "Charlas":</h2>
+<h1>Guia de ayuda sobre la página web "DeCharla"</h1>
 <br>
 <details>
   <summary>¿Cómo introducir la contraseña?</summary>
