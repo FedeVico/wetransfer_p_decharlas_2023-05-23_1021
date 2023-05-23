@@ -9,8 +9,6 @@
 
            {% for room in room_list %}
            <a href="/decharlas/{{room.name}}">{{room.name}}</a>
-           Dynamic link ->
-           <a href="/decharlas/dyn/{{room.name}}">{{room.name}}</a>
            <br><br>
 
            {% endfor %}
@@ -21,9 +19,9 @@
            {% for unread in salaNoLeida %}
 
            {% if unread == '-1' %}
-           <p>New room</p>
+           <p>Nueva Sala</p>
            {% else %}
-           <p>{{unread}} unread messages </p>
+           <p>{{unread}} mensajes no leídos </p>
            {% endif %}
 
            {% endfor %}
@@ -34,7 +32,7 @@
 
            {% for total in total_msg %}
 
-           <p>{{total}} total messages</p>
+           <p>{{total}} mensajes</p>
 
            {% endfor %}
 
@@ -50,12 +48,7 @@
            <p>Dislikes: {{vote.dislikes}}</p>
            {% endfor %}
        </div>
-
-
-
    </div>
-
-
 </div>
 
 

@@ -66,7 +66,7 @@
 
 <div class="container-fluid" id="main_header">
     <div class="row bg-dark text-white">
-        <header><a href="/decharlas/" >Charlas</a> </header>
+        <header><a href="/decharlas/" >DeCharlas</a> </header>
     </div>
 </div>
 
@@ -95,7 +95,7 @@
 
 <!--Content scheme-->
 <!--d-flex flex-column overflow-hidden min-vh-100 vh-100-->
-<!--https://itecnote.com/tecnote/html-cant-make-100-div-height-between-header-and-footer-with-bootstrap-4/-->
+
 <div class="container-fluid" id="main_body">
     <div class="row bg-white text-dark row-height">
       <div class="col-xxl-3 col-md-12 border border-end border-primary" id="main_extra">
@@ -105,6 +105,7 @@
             <form method="post" action="">
               {% csrf_token %}
               <div class="mb-3">
+                <p> Nombre usuario: {{user_info.name}}</p>
                 <label for="roomname" class="form-label">Entrada a la sala</label>
                 <input type="text" class="form-control" id="roomname" name="roomname" aria-describedby="room help" required="required">
                 <div id="room help" class="form-text">Introduce nombre</div>
